@@ -12,6 +12,7 @@ public class HotelWebAppApplication extends SpringBootServletInitializer{
 		SpringApplication.run(HotelWebAppApplication.class, args);
 	}
 	
+	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(HotelWebAppApplication.class);
 	}
