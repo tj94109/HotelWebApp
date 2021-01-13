@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="ISO-8859-1">
+<title>Make your reservation here!</title>
+</head>
+<body>
+	<h1 align="left"> Rooms available for: <a th:text=${hotel.hotelName}> </a> </h1>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+            	<th>Room Number</th>
+                <th>Bed Type</th>
+                <th>Smoking/Non-Smoking</th>
+                <th>Nightly Rate</th>
+                <th>Available</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room:${rooms}" >
+        	<td th:text=${room.roomNumber}>Room Number</td>
+        	<td th:text="${room.bedType}"> Bed Type</td>
+        	<td th:text="${room.smoking}"> Smoking / Non-Smoking</td>
+     	   	<td th:text="${room.rate}"> Rate / night</td>
+     	   	<td th:if="${not room.occupied}" th:text="(Available)">  Rate / night</td>
+        </tr>
+        </tbody>
+        </table>
+
+<h1> Make Reservation </h1>
+<h3 th:text="'Hotel ID: '+ ${hotel.id}"> </h3>
+<h3 th:text="'Location: '+ ${hotel.location}"> </h3>
+
+<form action="#" th:action="@{/reserve/{id}(id=${hotel.id})}" th:object="${hotel}" method="post">
+Name:
+<input type="text" th:field="${guest.name}"> <br>
+Smoking (Non_Smoking):
+<input type="text" th:field="${guest.smoking}"/><br>
+Bed Type:
+<input type="text" th:field="${guest.bed}"/><br>
+
+<button type="submit">Submit Reservation</button>
+
+<h1> Cancel Reservation </h1>
+</form>
+<form action="#" th:action="@{/cancel/{id}(id=${hotel.id})}" th:object="${hotel}" method="post">
+Name:
+<input type="text" th:field="${guest.name}"> <br>
+
+<button type="submit">Cancel Reservation</button>
+
+</form>
+
+</body>
+</html>

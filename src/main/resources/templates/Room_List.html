@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      <head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1 align="center"> Hotel Room List </h1>
+    <br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+            	<th>Room Number</th>
+                <th>Bed Type</th>
+                <th>Smoking/Non-Smoking</th>
+                <th>Nightly Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room:${rooms}">
+        	<td th:text=${room.roomNumber}>Room Number</td>
+        	<td th:text="${room.bedType}"> Bed Type</td>
+        	<td th:text="${room.smoking}"> Smoking / Non-Smoking</td>
+        	<td th:text="${room.rate}"> Rate / night</td>
+        </tr>
+        </tbody>
+        </table>
+
+</body>
+</html>
