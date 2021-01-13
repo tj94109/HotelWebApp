@@ -100,6 +100,6 @@ public class HotelController {
 		hotelService.cancelReservation(guest.getName(), id);
 		return "redirect:/cancelled";
 	}
-
+	//
 
 }
