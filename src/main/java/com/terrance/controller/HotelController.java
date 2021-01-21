@@ -30,9 +30,11 @@ public class HotelController {
 	@Autowired
 	Guest guest;
 	
+	String name;
+	
 	@RequestMapping("/")
 	public String welcome(Model model) {
-		model.addAttribute("message2", " Click here to choose one of our hotels");
+		model.addAttribute("message", " Click HERE to choose a hotel! ");
 		return "index";
 	}
 
@@ -84,12 +86,18 @@ public class HotelController {
 	{
 		model.addAttribute(guest);
 		
-		hotelService.addReservation(guest.getName(), guest.getSmoking(), guest.getBed(), id);
+		hotelService.addReservation(guest.getName().toLowerCase(), guest.getSmoking().toLowerCase(), 
+				guest.getBed().toLowerCase(), id);
+		name = guest.getName();
+		System.out.println("reserve " + name);
 		return "redirect:/Confirmation";
 	}
 
 	@RequestMapping("/Confirmation")
+	
 	public String confirmationPage(@ModelAttribute Guest guest, Model model) {
+		model.addAttribute(name);
+		System.out.println("Confirmation " + name);
 		return "Confirmation";
 	}
 

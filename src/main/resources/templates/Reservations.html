@@ -34,9 +34,9 @@
 <form action="#" th:action="@{/reserve/{id}(id=${hotel.id})}" th:object="${hotel}" method="post">
 Name:
 <input type="text" th:field="${guest.name}"> <br>
-Smoking (Non_Smoking):
+Smoking  ( 'n'  or  's' ):
 <input type="text" th:field="${guest.smoking}"/><br>
-Bed Type:
+Bed Type: ( king / double )
 <input type="text" th:field="${guest.bed}"/><br>
 
 <button type="submit">Submit Reservation</button>
