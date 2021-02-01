@@ -17,6 +17,7 @@ class HotelWebAppApplicationTests {
 
 	@Autowired
 	RoomService rservice;
+	
 
 //	Hotel hotelA = new Hotel(1, "Hotel California", "San Francisco");		
 //	Hotel hotelB = new Hotel(2, "The Curtis Hotel"," Denver");
